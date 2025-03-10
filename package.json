@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nitro build --preset bun",
+    "dev": "nitro dev",
+    "prepare": "nitro prepare",
+    "preview": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "nitropack": "latest"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher"
+  ],
+  "dependencies": {
+    "@directus/sdk": "^19.0.1",
+    "sharp": "^0.33.5"
+  }
+}
