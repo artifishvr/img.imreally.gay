@@ -1,3 +1,3 @@
 export default defineEventHandler((event) => {
-  return "meow";
+  return "meow arti.gay";
 });
