@@ -4,7 +4,7 @@ import Sharp from "sharp";
 
 const DIRECTUS_URL = process.env.DIRECTUS_URL;
 
-export default defineCachedEventHandler(
+export default cachedEventHandler(
   async (event) => {
     // Fetch images from Directus
     const pictures = await directus.request(readItems("thewall"));
@@ -56,7 +56,14 @@ export default defineCachedEventHandler(
     // Compose final image
     const finalImage = await canvas.composite(compositeArray).png().toBuffer();
 
-    return finalImage;
+    const stream = new ReadableStream({
+      start(controller) {
+        controller.enqueue(finalImage);
+        controller.close();
+      },
+    });
+
+    return stream;
   },
   { maxAge: 60 * 60 * 6 /* 6 hour */ }
 );
