@@ -4,7 +4,7 @@ import Sharp from "sharp";
 
 const DIRECTUS_URL = process.env.DIRECTUS_URL;
 
-export default cachedEventHandler(async (event) => {
+export default eventHandler(async (event) => {
   // Fetch images from Directus
   const pictures = await directus.request(readItems("thewall"));
 
