@@ -4,7 +4,7 @@
     "build": "nitro build --preset bun",
     "dev": "nitro dev",
     "prepare": "nitro prepare",
-    "preview": "node .output/server/index.mjs"
+    "preview": "bun .output/server/index.mjs"
   },
   "devDependencies": {
     "nitropack": "latest"

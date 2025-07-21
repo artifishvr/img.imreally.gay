@@ -3,14 +3,6 @@ import { createDirectus, staticToken, rest } from "@directus/sdk";
 const DIRECTUS_URL = process.env.DIRECTUS_URL;
 const DIRECTUS_TOKEN = process.env.DIRECTUS_TOKEN;
 
-interface Bodies {
-  id: string;
-  sessions: number;
-  gender: string;
-  date_updated: string;
-  date_created: string;
-}
-
 interface Pictures {
   id: number;
   name: string;
@@ -21,7 +13,6 @@ interface Pictures {
 }
 
 interface Schema {
-  bodies: Bodies[];
   thewall: Pictures[];
 }
 
