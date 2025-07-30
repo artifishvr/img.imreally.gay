@@ -75,21 +75,14 @@ func main() {
 
 		combined := imaging.New(width, height, image.Black)
 
-		for i, pictureUUID := range pictureUUIDs {
-			if i >= grid.Cols*grid.Rows {
-				log.Printf("Warning: More images provided than grid slots available. Skipping extra images.")
-				break
+		maxWorkers := 10
+		images := downloadImagesWithWorkerPool(pictureUUIDs, grid, maxWorkers)
+
+		for i := 0; i < grid.Cols*grid.Rows; i++ {
+			img, exists := images[i]
+			if !exists {
+				continue // Skip failed downloads
 			}
-
-			imageURL := fmt.Sprintf("https://api.imreally.gay/assets/%s", pictureUUID)
-
-			img, err := openRemoteImage(imageURL)
-			if err != nil {
-				log.Printf("Warning: Failed to open image %s: %v", imageURL, err)
-				continue
-			}
-
-			resizedImg := imaging.Fill(img, grid.PicWidth, grid.PicHeight, imaging.Center, imaging.Lanczos)
 
 			col := i % grid.Cols
 			row := i / grid.Cols
@@ -97,10 +90,9 @@ func main() {
 			x := col * grid.PicWidth
 			y := row * grid.PicHeight
 
-			combined = imaging.Paste(combined, resizedImg, image.Pt(x, y))
+			combined = imaging.Paste(combined, img, image.Pt(x, y))
 		}
 
-		// Send a string response to the client
 		var buf bytes.Buffer
 		err = jpeg.Encode(&buf, combined, &jpeg.Options{Quality: 90})
 		if err != nil {
