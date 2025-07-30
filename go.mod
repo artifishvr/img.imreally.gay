@@ -3,10 +3,10 @@ module img.imreally.gay
 go 1.24.5
 
 require (
-	github.com/disintegration/imaging v1.6.2
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/gofiber/fiber/v3 v3.0.0-beta.5
 	github.com/joho/godotenv v1.5.1
+	github.com/kovidgoyal/imaging v1.6.4
 )
 
 require (
@@ -22,7 +22,7 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.64.0 // indirect
 	golang.org/x/crypto v0.40.0 // indirect
-	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8 // indirect
+	golang.org/x/image v0.24.0 // indirect
 	golang.org/x/net v0.42.0 // indirect
 	golang.org/x/sys v0.34.0 // indirect
 	golang.org/x/text v0.27.0 // indirect

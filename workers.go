@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/disintegration/imaging"
+	"github.com/kovidgoyal/imaging"
 )
 
 type ImageJob struct {

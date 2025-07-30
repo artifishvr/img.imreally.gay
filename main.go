@@ -9,11 +9,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/disintegration/imaging"
 	"github.com/go-resty/resty/v2"
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/joho/godotenv"
+	"github.com/kovidgoyal/imaging"
 )
 
 type APIResponse struct {
